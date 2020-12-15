@@ -52,3 +52,8 @@ I am alone on this project, so for simplicity, I wrote my tasks here.
 - [ ] Add a new view to view the events I attend (with a calendar)
 - [ ] Burger Menu on mobile
 - [ ] Add message on createEvent if date or hour is empty
+- [ ] Catch and display fetching errors on front
+- [ ] Add Car option to know model
+- [ ] Document API
+
+Have fun ;)
