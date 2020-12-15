@@ -14,6 +14,7 @@ const user = require("./routes/user.routes.js");
 const subscribe = require("./routes/subscribe.routes.js");
 const login = require("./routes/login.routes.js");
 const building = require("./routes/building.routes.js");
+const event = require("./routes/event.routes.js");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -23,6 +24,7 @@ app.use("/user", user);
 app.use("/subscribe", subscribe);
 app.use("/login", login);
 app.use("/building", building);
+app.use("/event", event);
 
 server.listen(port, () => {
   console.info(`Server listening on port : ${port}`);

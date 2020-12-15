@@ -11,7 +11,7 @@ const Residents = ({ building }) => {
           building.residents.map((resident) => {
             return (
               <li key={resident.id}>
-                {resident.lastname.toUpperCase()} {resident.firstname}
+                {resident.firstname} {resident.lastname.toUpperCase()}
               </li>
             );
           })

@@ -3,6 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import { Navbar } from "react-bootstrap";
 import { UserContext } from "./context/UserContext";
 import API_URL from "./config/config";
+import axios from "axios";
 
 import Sign from "./components/Sign";
 import Header from "./components/Header";
@@ -18,21 +19,24 @@ const App = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    fetch(API_URL + userActuWithAdressUri + userId, {
-      method: "get",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        token: token,
-      },
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((result) => {
-        result[0].id = userId;
-        setUser(result[0]);
-      });
+    if (userId) {
+      axios
+        .get(API_URL + userActuWithAdressUri + userId, {
+          method: "get",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            token: token,
+          },
+        })
+        .then((response) => {
+          return response.data;
+        })
+        .then((result) => {
+          result[0].id = userId;
+          setUser(result[0]);
+        });
+    }
   }, [userId, token]);
 
   console.log(user);

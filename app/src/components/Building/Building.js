@@ -1,13 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { Card, Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import API_URL from "../../config/config";
 import Residents from "./Residents";
+import Events from "./Events";
+import axios from "axios";
+import CreateEvent from "./CreateEvent";
 
 const Building = ({ user }) => {
   const [building, setBuilding] = useState(null);
+  const [thisEvents, setThisEvents] = useState(null);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const buildingUsersUri = "/user/building/";
   const token = localStorage.getItem("token");
+
+  const getEventsUri = "/event/building/";
 
   useEffect(() => {
     if (user) {
@@ -24,6 +34,19 @@ const Building = ({ user }) => {
         })
         .then((result) => {
           setBuilding({ residents: result });
+        });
+
+      axios
+        .get(API_URL + getEventsUri + user.building_id, {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            token: token,
+          },
+        })
+        .then((response) => {
+          setThisEvents(response.data);
         });
     }
   }, [user, token]);
@@ -45,28 +68,18 @@ const Building = ({ user }) => {
         <section>
           <header>
             <h4>Expéditions à venir</h4>
-            <Button variant="light">Créer une expédition</Button>
+            <Button variant="light" onClick={handleShow}>
+              Créer une expédition
+            </Button>
           </header>
-          <Card className="expedition">
-            <Card.Body>
-              <Card.Title>
-                André BLANC <Button variant="darkgreen">Participer</Button>
-              </Card.Title>
-              <Card.Subtitle className="green">
-                26/12/2020 - 14h30
-              </Card.Subtitle>
-              <Card.Subtitle className="text-muted">
-                2 rue des Bons enfants 69007 LYON
-              </Card.Subtitle>
-              <Card.Subtitle className="mb-2 text-muted">
-                Déchèterie de l'Artillerie
-              </Card.Subtitle>
-              <Card.Text className="participation">
-                <span>2 places restantes</span>
-                <Card.Link href="#">1 participant</Card.Link>
-              </Card.Text>
-            </Card.Body>
-          </Card>
+          <CreateEvent user={user} show={show} handleClose={handleClose} />
+          {thisEvents ? (
+            thisEvents.map((ev) => {
+              return <Events thisEvent={ev} user={user} />;
+            })
+          ) : (
+            <div>Loading</div>
+          )}
         </section>
       </div>
     </main>

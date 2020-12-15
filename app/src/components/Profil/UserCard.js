@@ -74,27 +74,6 @@ const UserCard = ({ user }) => {
       .then((response) => {
         console.log(response);
       });
-
-    // fetch(API_URL + putUserUri + user.id, {
-    //   method: "PUT",
-    //   headers: {
-    //     Accept: "application/json",
-    //     "Content-Type": "application/json",
-    //     token: token,
-    //   },
-    //   body: JSON.stringify({
-    //     username: username,
-    //     firstname: firstname,
-    //     lastname: lastname,
-    //     email: email,
-    //     password: password,
-    //     building_id: user.building_id,
-    //   }),
-    // })
-    //   .then((response) => {
-    //     return response.json();
-    //   })
-    //   .then((result) => console.log(result));
   };
 
   return (
