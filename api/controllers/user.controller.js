@@ -22,6 +22,15 @@ class UserController {
     });
   }
 
+  static getOneWithBuilding(req, res) {
+    UserModel.findOneWithBuilding([req.params.id], (err, results) => {
+      if (err) {
+        res.status(500).send(err);
+      }
+      res.send(results);
+    });
+  }
+
   static getAllInBuilding(req, res) {
     UserModel.findAllInBuilding(
       { building_id: req.params.building_id },
@@ -124,7 +133,9 @@ class UserController {
     if (!errors.isEmpty()) {
       return res.status(422).json({ errors: errors.array() });
     } else {
-      req.body.password = generatePassword(req.body.password);
+      if (req.body.password) {
+        req.body.password = generatePassword(req.body.password);
+      }
       UserModel.updateBy(req.body, { id: req.params.id }, (err, results) => {
         if (err) {
           res.status(500).send(JSON.stringify({ err }));

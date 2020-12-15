@@ -2,7 +2,10 @@ const db = require("../config/db");
 
 class BuildingModel {
   static findAll(callback) {
-    db.query("SELECT id, adress, zip_code, city FROM building", callback);
+    db.query(
+      "SELECT id, adress, zip_code, city FROM building ORDER BY zip_code, adress ASC",
+      callback
+    );
   }
 
   static findById(where, callback) {

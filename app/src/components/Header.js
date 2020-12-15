@@ -5,8 +5,6 @@ import { UserContext } from "../context/UserContext";
 const Header = () => {
   const { logged, setLogged } = useContext(UserContext);
 
-  console.log(window.location.pathname);
-
   const resetLocalStorage = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("id");
@@ -39,7 +37,7 @@ const Header = () => {
             </Nav.Link>
           </Nav>
           <Button variant="outline-light" onClick={logout}>
-            Deconnexion
+            Déconnexion
           </Button>
         </>
       )}

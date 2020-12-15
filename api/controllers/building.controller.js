@@ -34,7 +34,7 @@ class BuildingController {
       if (err) {
         res.status(500).send(JSON.stringify({ err }));
       }
-      res.status(201).json(`Building added`);
+      res.status(201).json(results);
     });
   }
 

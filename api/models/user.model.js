@@ -16,6 +16,14 @@ class UserModel {
     );
   }
 
+  static findOneWithBuilding(where, callback) {
+    db.query(
+      "SELECT U.id, U.username, U.firstname, U.lastname, U.email, U.building_id, B.id, B.adress, B.zip_code, B.city FROM user AS U LEFT OUTER JOIN building AS B ON U.building_id=B.id WHERE U.id = ?",
+      [where],
+      callback
+    );
+  }
+
   static findBy(where, callback) {
     db.query(
       "SELECT id, username, firstname, lastname, email, building_id FROM user WHERE username = ? OR email = ?",
@@ -34,7 +42,7 @@ class UserModel {
 
   static findAllInBuilding(where, callback) {
     db.query(
-      "SELECT id, username, firstname, lastname, email, building_id FROM user WHERE ?",
+      "SELECT id, username, firstname, lastname, email, building_id FROM user WHERE ? ORDER BY lastname ASC",
       where,
       callback
     );

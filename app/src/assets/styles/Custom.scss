@@ -65,11 +65,24 @@ main {
   min-height: 90vh;
 }
 
+main.building-main {
+  display: block;
+}
+
+.building-main .wrapper {
+  width: 100%;
+  display: flex;
+}
+
 aside {
   width: 20%;
   border-radius: 10px;
   margin-right: 1%;
   background: $beige;
+}
+
+ul {
+  padding-top: 5%;
 }
 
 section {
@@ -91,25 +104,28 @@ section header {
   justify-content: space-between;
 }
 
-section .card {
+section .expedition {
   width: 95%;
+}
+
+.card {
   border-radius: 5px;
   margin: 1% auto;
   box-shadow: 5px 5px 8px -5px rgba(0, 0, 0, 0.5);
 }
 
-.card-title {
+.expedition .card-title {
   justify-content: space-between;
   display: flex;
   font-size: 1.1em;
 }
 
-.card-subtitle {
+.expedition .card-subtitle {
   font-size: 1.1em;
   margin-bottom: 1%;
 }
 
-.card-text {
+.expedition .card-text {
   color: $dark-blue;
 }
 
@@ -124,6 +140,19 @@ section .card {
 
 a.card-link {
   color: $dark-green;
+}
+
+/* PROFIL */
+
+.profil-cards-deck {
+  display: flex;
+}
+
+.profil-card .card-title,
+.building-card .card-title {
+  font-size: 1.5em;
+  padding: 15px 0 0 0;
+  text-align: center;
 }
 
 /* FOOTER */

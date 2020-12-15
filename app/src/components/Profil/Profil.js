@@ -1,14 +1,18 @@
 import React from "react";
-import { Button } from "react-bootstrap";
+import UserCard from "./UserCard";
+import BuildingCard from "./BuildingCard";
 
-const Profil = () => {
+const Profil = ({ user }) => {
   return (
     <main>
       <section>
         <header>
           <h4>Mon profil</h4>
-          <Button variant="light">Mettre à jour</Button>
         </header>
+        <div className="profil-cards-deck">
+          <UserCard user={user} />
+          <BuildingCard user={user} />
+        </div>
       </section>
     </main>
   );
