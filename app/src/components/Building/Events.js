@@ -125,9 +125,9 @@ const Events = ({ thisEvent, user, setNeedReload }) => {
 
   const renderTooltip = (props) => (
     <Tooltip id="button-tooltip" {...props}>
-      {participants.map((participant) => {
+      {participants.map((participant, i) => {
         return (
-          <li>
+          <li key={thisEvent.id + participant.id + participant.lastname + i}>
             {participant.firstname} {participant.lastname.toUpperCase()}
           </li>
         );
