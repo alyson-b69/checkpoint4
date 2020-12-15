@@ -37,6 +37,7 @@ I am alone on this project, so for simplicity, I wrote my tasks here.
 - [x] Add possibility to show how participate to 1 event on Building Page
 - [x] Add possibility to delete my participation
 - [x] Responsive Design
+- [x] Manage event participants before delete event
 
 ### NEED TO FIX
 
@@ -50,4 +51,4 @@ I am alone on this project, so for simplicity, I wrote my tasks here.
 - [ ] Add on chat-box by event
 - [ ] Add a new view to view the events I attend (with a calendar)
 - [ ] Burger Menu on mobile
-- [ ] Manage event participants before delete event
+- [ ] Add message on createEvent if date or hour is empty
