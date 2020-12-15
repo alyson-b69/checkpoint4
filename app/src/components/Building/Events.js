@@ -39,10 +39,11 @@ const Events = ({ thisEvent, user, setNeedReload }) => {
       });
   }, [thisEvent.eventId, token]);
 
-  const handleDelete = (e) => {
+  const handleDeleteEvent = (e) => {
     e.preventDefault();
+
     axios
-      .delete(API_URL + eventDeleteUri + thisEvent.eventId, {
+      .delete(API_URL + "/participe/event/?event_id=" + thisEvent.eventId, {
         method: "DELETE",
         headers: {
           Accept: "application/json",
@@ -51,15 +52,27 @@ const Events = ({ thisEvent, user, setNeedReload }) => {
         },
       })
       .then(() => {
-        alert("L'évènement a été supprimé");
-      })
-      .then(() => {
-        setNeedReload(true);
+        axios
+          .delete(API_URL + eventDeleteUri + thisEvent.eventId, {
+            method: "DELETE",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              token: token,
+            },
+          })
+          .then(() => {
+            alert("L'évènement a été supprimé");
+          })
+          .then(() => {
+            setNeedReload(true);
+          });
       });
   };
 
   const handleDeleteParticipation = (e) => {
     e.preventDefault();
+
     axios
       .delete(
         API_URL +
@@ -129,7 +142,7 @@ const Events = ({ thisEvent, user, setNeedReload }) => {
           {thisEvent.firstname} {thisEvent.lastname.toUpperCase()}{" "}
           <div>
             {parseInt(thisEvent.admin_id) === parseInt(user.id) ? (
-              <Button variant="delete" onClick={handleDelete}>
+              <Button variant="delete" onClick={handleDeleteEvent}>
                 <FaTrashAlt />
               </Button>
             ) : (

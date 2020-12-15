@@ -48,5 +48,6 @@ I am alone on this project, so for simplicity, I wrote my tasks here.
 - [ ] Manage recycling_center with API
 - [ ] Add MapAPI to show my building on a map
 - [ ] Add on chat-box by event
-- [ ] Burger Menu
+- [ ] Add a new view to view the events I attend (with a calendar)
+- [ ] Burger Menu on mobile
 - [ ] Manage event participants before delete event

@@ -43,6 +43,18 @@ class ParticipeController {
       }
     );
   }
+
+  static deleteAllByEventId(req, res) {
+    ParticipeModel.deleteByEventId(
+      [parseInt(req.query.event_id)],
+      (err, results) => {
+        if (err) {
+          res.status(500).send(err);
+        }
+        res.status(202).send(`Participations annulées`);
+      }
+    );
+  }
 }
 
 module.exports = ParticipeController;

@@ -24,6 +24,10 @@ class ParticipeModel {
       callback
     );
   }
+
+  static deleteByEventId(where, callback) {
+    db.query("DELETE FROM participant WHERE event_id = ?", where, callback);
+  }
 }
 
 module.exports = ParticipeModel;
