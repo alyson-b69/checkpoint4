@@ -1,0 +1,105 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+main#sign-container {
+  width: 100%;
+  min-height: 85vh;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+div#sign {
+  width: 400px;
+  height: auto;
+  background: #8bc34a;
+  border-radius: 5px;
+  box-shadow: 0 0 12px -3px rgba(0, 0, 0, 0.5);
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+
+div#sign ul {
+  height: 50px;
+  width: 100%;
+  position: relative;
+  padding: 0;
+}
+
+div#sign ul li {
+  width: 49%;
+  display: inline-block;
+  height: inherit;
+  text-align: center;
+  padding: 10px;
+}
+
+div#sign ul li button {
+  color: #fff;
+  border: none;
+  background: #8bc34a;
+  text-decoration: none;
+  opacity: 0.5;
+}
+
+div#sign ul li button:hover,
+div#sign ul li button.active {
+  opacity: 1;
+}
+
+div#sign div.tab {
+  display: none;
+  padding: 10px;
+}
+
+div#sign div.tab.active {
+  display: block;
+}
+
+div#sign div.tab p {
+  margin-bottom: 15px;
+}
+
+div#sign div.tab input {
+  width: 100%;
+  padding: 10px;
+  display: block;
+  border-radius: 5px;
+  border: 0;
+}
+
+div#sign div.tab input[type="submit"] {
+  cursor: pointer;
+  font-weight: 600;
+  -webkit-appearance: none;
+  -moz-appaerance: none;
+  appearance: none;
+  background: #689f38;
+  color: #f0f4c3;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+p.error {
+  margin-top: 2%;
+  text-align: center;
+}
+
+@media screen and (max-width: 900px) {
+  main#sign-container {
+    min-height: 99vh;
+  }
+
+  div#sign {
+    width: 90%;
+    height: auto;
+    border-radius: 5px;
+    margin-top: 10%;
+  }
+}

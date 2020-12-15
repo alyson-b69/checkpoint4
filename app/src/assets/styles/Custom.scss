@@ -1,0 +1,135 @@
+/* The following line can be included in a src/App.scss */
+
+@import "~bootstrap/scss/bootstrap";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+$dark-blue: #3e464c;
+$light-green: #dcedc8;
+$primary-green: #8bc34a;
+$bold-green: #4caf50;
+$secondary-text: #757575;
+$divider-color: #bdbdbd;
+$beige: #f0f4c3;
+$dark-green: #689f38;
+
+body {
+  font-family: Roboto;
+  cursor: default;
+  margin: 0;
+  background: $dark-blue;
+  color: $dark-green;
+}
+
+a {
+  color: #000000;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #000000;
+  text-decoration: none;
+}
+
+.bg-dark {
+  background-color: $dark-green !important;
+}
+
+.btn-darkgreen {
+  background: $dark-green;
+  color: $beige;
+  font-weight: 500;
+}
+
+.btn-light {
+  color: $dark-blue;
+  background-color: #f8f9fa;
+  border-color: #f8f9fa;
+}
+
+.btn-light:hover {
+  background-color: $beige;
+  border-color: $beige;
+  color: $dark-green;
+}
+
+.navbar-dark .navbar-nav .show > .nav-link,
+.navbar-dark .navbar-nav .active > .nav-link,
+.navbar-dark .navbar-nav .nav-link.show,
+.navbar-dark .navbar-nav .nav-link.active {
+  color: $beige;
+}
+
+main {
+  padding: 2%;
+  display: flex;
+  min-height: 90vh;
+}
+
+aside {
+  width: 20%;
+  border-radius: 10px;
+  margin-right: 1%;
+  background: $beige;
+}
+
+section {
+  width: 100%;
+  border-radius: 10px;
+  background: $beige;
+}
+
+aside header,
+section header {
+  background: $dark-green;
+  padding: 6px 10px;
+  border-radius: 10px 10px 0 0;
+  color: $beige;
+}
+
+section header {
+  display: flex;
+  justify-content: space-between;
+}
+
+section .card {
+  width: 95%;
+  border-radius: 5px;
+  margin: 1% auto;
+  box-shadow: 5px 5px 8px -5px rgba(0, 0, 0, 0.5);
+}
+
+.card-title {
+  justify-content: space-between;
+  display: flex;
+  font-size: 1.1em;
+}
+
+.card-subtitle {
+  font-size: 1.1em;
+  margin-bottom: 1%;
+}
+
+.card-text {
+  color: $dark-blue;
+}
+
+.participation {
+  display: flex;
+  justify-content: space-between;
+}
+
+.participation span {
+  font-weight: 700;
+}
+
+a.card-link {
+  color: $dark-green;
+}
+
+/* FOOTER */
+
+footer.navbar.navbar-expand.navbar-dark.bg-dark {
+  text-align: center;
+  display: block;
+  color: $beige;
+}
