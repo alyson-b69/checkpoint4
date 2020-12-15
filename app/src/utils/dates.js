@@ -5,7 +5,7 @@ class dates {
     let year = timeStamp.split("-")[0];
     let month = timeStamp.split("-")[1];
     let day = timeStamp.split("-")[2].split("T")[0];
-    let hour = timeStamp.split("T")[1].split(":")[0];
+    let hour = parseInt(timeStamp.split("T")[1].split(":")[0]) + 1;
     let minute = timeStamp.split("T")[1].split(":")[1];
     if (format === "date") {
       return day + "/" + month + "/" + year;

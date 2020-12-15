@@ -158,6 +158,10 @@ section .expedition {
 .participation span {
   font-weight: 700;
 }
+.participants {
+  color: $dark-green;
+  cursor: pointer;
+}
 
 a.card-link {
   color: $dark-green;

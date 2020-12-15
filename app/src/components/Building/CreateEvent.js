@@ -34,9 +34,12 @@ const CreateEvent = ({ user, show, handleClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    let datetime = eventDate + " " + eventTime + ":00";
+
     let data = {
       admin_id: user.id,
-      datetime: eventDate,
+      datetime: datetime,
       building_id: user.building_id,
       nb_places: eventPlaces,
       recycling_center_id: eventRecycling,
@@ -51,7 +54,10 @@ const CreateEvent = ({ user, show, handleClose }) => {
           token: token,
         },
       })
-      .then(() => handleClose);
+      .then(() => alert("Votre évènement a été créé"))
+      .then(() => {
+        handleClose();
+      });
   };
   return (
     <Modal show={show} onHide={handleClose}>

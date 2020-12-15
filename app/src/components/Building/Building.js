@@ -37,7 +37,6 @@ const Building = ({ user }) => {
             setBuilding({ residents: result });
           });
 
-        console.log(API_URL + getEventsUri + user.building_id);
         axios
           .get(API_URL + getEventsUri + user.building_id, {
             method: "GET",
@@ -48,7 +47,6 @@ const Building = ({ user }) => {
             },
           })
           .then((response) => {
-            console.log(response.data);
             setThisEvents(response.data);
           });
       }
