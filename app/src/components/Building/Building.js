@@ -21,65 +21,80 @@ const Building = ({ user }) => {
 
   useEffect(() => {
     if (user) {
-      fetch(API_URL + buildingUsersUri + user.building_id, {
-        method: "get",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          token: token,
-        },
-      })
-        .then((response) => {
-          return response.json();
-        })
-        .then((result) => {
-          setBuilding({ residents: result });
-        });
-
-      axios
-        .get(API_URL + getEventsUri + user.building_id, {
-          method: "GET",
+      if (user.building_id) {
+        fetch(API_URL + buildingUsersUri + user.building_id, {
+          method: "get",
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
             token: token,
           },
         })
-        .then((response) => {
-          setThisEvents(response.data);
-        });
+          .then((response) => {
+            return response.json();
+          })
+          .then((result) => {
+            setBuilding({ residents: result });
+          });
+
+        console.log(API_URL + getEventsUri + user.building_id);
+        axios
+          .get(API_URL + getEventsUri + user.building_id, {
+            method: "GET",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              token: token,
+            },
+          })
+          .then((response) => {
+            console.log(response.data);
+            setThisEvents(response.data);
+          });
+      }
     }
   }, [user, token]);
 
   return (
     <main className="building-main">
       <h3>
-        {user
+        {user && user.adress
           ? " " +
             user.adress +
             " - " +
             user.zip_code +
             " " +
             user.city.toUpperCase()
-          : ""}
+          : "Pas d'immeuble rensigné dans votre profil"}
       </h3>
       <div className="wrapper">
         <Residents building={building} />
         <section>
           <header>
             <h4>Expéditions à venir</h4>
-            <Button variant="light" onClick={handleShow}>
+            <Button
+              variant="light"
+              onClick={handleShow}
+              disabled={user && user.building_id ? false : true}
+            >
               Créer une expédition
             </Button>
           </header>
           <CreateEvent user={user} show={show} handleClose={handleClose} />
-          {thisEvents ? (
-            thisEvents.map((ev) => {
-              return <Events thisEvent={ev} user={user} />;
-            })
-          ) : (
-            <div>Loading</div>
-          )}
+          <div className="event-content">
+            {thisEvents && thisEvents.length ? (
+              thisEvents.map((ev) => {
+                return <Events thisEvent={ev} user={user} key={ev.eventId} />;
+              })
+            ) : user && user.building_id ? (
+              <div className="p-3"> Pas dévènements à venir </div>
+            ) : (
+              <div className="p-3">
+                Mettez à jour votre immeuble dans votre profil pour voir les
+                évènements associés à ce dernier.
+              </div>
+            )}
+          </div>
         </section>
       </div>
     </main>

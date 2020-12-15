@@ -124,6 +124,11 @@ section .expedition {
   width: 95%;
 }
 
+.event-content {
+  max-height: 70vh;
+  overflow-y: scroll;
+}
+
 .card {
   border-radius: 5px;
   margin: 1% auto;

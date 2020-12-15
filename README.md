@@ -13,10 +13,10 @@ I am alone on this project, so for simplicity, I wrote my tasks here.
 ### BACK END
 
 - [x] Create user route
-- [ ] Create building route
-- [ ] Create recycling route ()
-- [ ] Create event route
+- [x] Create building route
+- [x] Create event route
 - [ ] Create participant route
+- [ ] Create recycling_center route ? or create a new API with grand-lyon data ? Nice to have ?
 
 ### FRONT END
 
@@ -26,5 +26,14 @@ I am alone on this project, so for simplicity, I wrote my tasks here.
 - [x] Create Sign-In component
 - [x] Create Sign-up component
 - [x] Create log-out button
-- [ ] Create building page
-- [ ] Create profil page
+
+- [x] Create administrable profilPage
+- [ ] Add possibility to create a new building on profilPage
+
+- [x] Create residentsList component on building page
+- [x] Create eventList component on Building page
+- [x] Create createEvent component on Building page
+- [x] Add possibility to delete Event on Building page
+- [ ] Add possibility to participate to 1 event on Building Page
+- [ ] Add possibility to show how participate to 1 event on Building Page
+- [ ] Add MapAPI to show my building on a map

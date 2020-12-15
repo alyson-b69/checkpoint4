@@ -8,6 +8,8 @@ const Events = ({ thisEvent, user }) => {
   const eventDeleteUri = "/event/";
   const token = localStorage.getItem("token");
 
+  console.log("thisEvent : ", thisEvent);
+
   const handleDelete = (e) => {
     e.preventDefault();
     axios

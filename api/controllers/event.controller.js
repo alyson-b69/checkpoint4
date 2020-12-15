@@ -20,13 +20,16 @@ class EventController {
   }
 
   static getAllByBuildingId(req, res) {
-    EventModel.findByBuildingId([req.params.building_id], (err, result) => {
-      if (err) {
-        res.status(500).send(JSON.stringify({ err }));
-      } else {
-        res.status(200).send(result);
+    EventModel.findByBuildingId(
+      [parseInt(req.params.building_id)],
+      (err, result) => {
+        if (err) {
+          res.status(500).send(JSON.stringify({ err }));
+        } else {
+          res.status(200).send(result);
+        }
       }
-    });
+    );
   }
 
   static createOne(req, res) {

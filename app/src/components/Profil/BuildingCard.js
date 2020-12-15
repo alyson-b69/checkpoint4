@@ -39,6 +39,7 @@ const BuildingCard = ({ user }) => {
   const handleAdressChange = (e) => {
     e.preventDefault();
     setAdressId(e.target.value);
+    console.log(e);
   };
 
   const handleZipChange = (e) => {
@@ -101,6 +102,10 @@ const BuildingCard = ({ user }) => {
                       {item.adress}
                     </option>
                   ))}
+                <option
+                  value={null}
+                  selected={user && user.adress ? false : true}
+                ></option>
               </Form.Control>
             </Col>
           </Form.Row>

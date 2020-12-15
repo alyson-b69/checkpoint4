@@ -18,7 +18,7 @@ class EventModel {
 
   static findByBuildingId(where, callback) {
     db.query(
-      "SELECT E.id AS eventId, E.admin_id, E.datetime, E.building_id, E.nb_places, E.recycling_center_id, E.is_active, U.firstname, U.lastname, U.id AS userId, B.adress, B.zip_code, B.city FROM events AS E LEFT OUTER JOIN user AS U ON E.building_id = ? AND U.id=E.admin_id LEFT OUTER JOIN building AS B ON E.building_id = B.id ORDER BY E.datetime ASC",
+      "SELECT E.id AS eventId, E.admin_id, E.datetime, E.building_id, E.nb_places, E.recycling_center_id, E.is_active, U.firstname, U.lastname, U.id AS userId, B.adress, B.zip_code, B.city FROM events AS E INNER JOIN user AS U ON E.building_id = ? AND U.id=E.admin_id INNER JOIN building AS B ON E.building_id = B.id ORDER BY E.datetime ASC",
       where,
       callback
     );
