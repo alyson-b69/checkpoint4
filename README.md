@@ -36,10 +36,11 @@ I am alone on this project, so for simplicity, I wrote my tasks here.
 - [x] Add possibility to participate to 1 event on Building Page
 - [x] Add possibility to show how participate to 1 event on Building Page
 - [x] Add possibility to delete my participation
+- [x] Responsive Design
 
 ### NEED TO FIX
 
-- [ ] Refresh data after login, and after submit
+- [ ] Refresh data after all submit
 
 ### NICE TO HAVE
 
@@ -47,3 +48,5 @@ I am alone on this project, so for simplicity, I wrote my tasks here.
 - [ ] Manage recycling_center with API
 - [ ] Add MapAPI to show my building on a map
 - [ ] Add on chat-box by event
+- [ ] Burger Menu
+- [ ] Manage event participants before delete event

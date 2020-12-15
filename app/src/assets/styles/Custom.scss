@@ -1,7 +1,7 @@
 /* The following line can be included in a src/App.scss */
 
 @import "~bootstrap/scss/bootstrap";
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+//@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
 $dark-blue: #3e464c;
 $light-green: #dcedc8;
@@ -13,11 +13,11 @@ $beige: #f0f4c3;
 $dark-green: #689f38;
 
 body {
-  font-family: Roboto;
   cursor: default;
   margin: 0;
   background: $dark-blue;
   color: $dark-green;
+  max-width: 100vw;
 }
 
 a {
@@ -186,4 +186,56 @@ footer.navbar.navbar-expand.navbar-dark.bg-dark {
   text-align: center;
   display: block;
   color: $beige;
+}
+
+/* RESPONSIVE */
+
+@media screen and (max-width: 900px) {
+  .building-main .wrapper {
+    flex-direction: column;
+  }
+
+  aside,
+  .building-main h3 {
+    width: 95%;
+    margin: auto;
+  }
+
+  .building-main h3 {
+    margin-bottom: 2%;
+  }
+
+  .event-content {
+    max-height: 100%;
+    overflow-y: inherit;
+  }
+
+  /* NEED A BURGER MENU*/
+  header button.btn.btn-outline-light {
+    display: none;
+  }
+
+  section {
+    background: none;
+    border-radius: none;
+  }
+
+  section header {
+    display: none;
+  }
+
+  ul {
+    padding-top: 2%;
+  }
+
+  .profil-cards-deck {
+    flex-direction: column;
+  }
+
+  .profil-card.col-md-4.card,
+  .building-card.col-md-6.card {
+    max-width: 90%;
+    margin: 5%;
+    margin-top: 0;
+  }
 }

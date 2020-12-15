@@ -2,10 +2,6 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: "Open Sans", sans-serif;
-}
-
 main#sign-container {
   width: 100%;
   min-height: 85vh;

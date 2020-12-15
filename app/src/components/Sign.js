@@ -4,7 +4,7 @@ import TabSignIn from "./Sign/TabSignIn";
 import TabSignUp from "./Sign/TabSignUp";
 import "../assets/styles/Sign.css";
 
-const Sign = () => {
+const Sign = ({ setToken, setUserId }) => {
   const [activeTab, setActiveTab] = useState("sign-in");
   const [successMessage, setSuccessMessage] = useState(null);
 
@@ -27,7 +27,12 @@ const Sign = () => {
           displaySignUp={displaySignUp}
           activeTab={activeTab}
         />
-        <TabSignIn successMessage={successMessage} activeTab={activeTab} />
+        <TabSignIn
+          successMessage={successMessage}
+          activeTab={activeTab}
+          setTokenApp={setToken}
+          setUserIdApp={setUserId}
+        />
         <TabSignUp displaySignIn={displaySignIn} activeTab={activeTab} />
       </div>
     </main>

@@ -3,8 +3,11 @@ import { Card, Button, Tooltip, OverlayTrigger } from "react-bootstrap";
 import dates from "../../utils/dates";
 import API_URL from "../../config/config";
 import axios from "axios";
+import { FaTrashAlt } from "react-icons/fa";
+import { HiOutlineBadgeCheck } from "react-icons/hi";
+import { BiCalendarX, BiCalendarCheck } from "react-icons/bi";
 
-const Events = ({ thisEvent, user }) => {
+const Events = ({ thisEvent, user, setNeedReload }) => {
   const eventDeleteUri = "/event/";
   const getEventParticipantsUri = "/participe/event/";
   const token = localStorage.getItem("token");
@@ -49,6 +52,9 @@ const Events = ({ thisEvent, user }) => {
       })
       .then(() => {
         alert("L'évènement a été supprimé");
+      })
+      .then(() => {
+        setNeedReload(true);
       });
   };
 
@@ -72,6 +78,9 @@ const Events = ({ thisEvent, user }) => {
       )
       .then(() => {
         alert("Votre participation a été annulée");
+      })
+      .then(() => {
+        setNeedReload(true);
       });
   };
 
@@ -95,6 +104,9 @@ const Events = ({ thisEvent, user }) => {
       )
       .then(() => {
         alert("Votre participation a été prise en compte");
+      })
+      .then(() => {
+        setNeedReload(true);
       });
   };
 
@@ -118,16 +130,19 @@ const Events = ({ thisEvent, user }) => {
           <div>
             {parseInt(thisEvent.admin_id) === parseInt(user.id) ? (
               <Button variant="delete" onClick={handleDelete}>
-                Supprimer
+                <FaTrashAlt />
               </Button>
             ) : (
               ""
             )}
 
             {foundInParticipants ? (
-              <Button variant="delete" onClick={handleDeleteParticipation}>
-                Annuler ma participation
-              </Button>
+              <>
+                <HiOutlineBadgeCheck fontSize="2em" className="mr-2" />
+                <Button variant="delete" onClick={handleDeleteParticipation}>
+                  <BiCalendarX fontSize="1.2em" />
+                </Button>
+              </>
             ) : (
               <Button
                 variant="darkgreen"
@@ -139,7 +154,7 @@ const Events = ({ thisEvent, user }) => {
                 }
                 onClick={handleParticipe}
               >
-                Participer
+                <BiCalendarCheck fontSize="1.2em" />
               </Button>
             )}
           </div>
@@ -154,10 +169,15 @@ const Events = ({ thisEvent, user }) => {
           Id {thisEvent.recycling_center_id} : Déchèterie de l'Artillerie
         </Card.Subtitle>
         <Card.Text className="participation">
-          <span className={places_restantes === 0 ? "warning" : ""}>
-            {places_restantes} place{places_restantes > 1 ? "s" : ""} restante
-            {places_restantes > 1 ? "s" : ""}
-          </span>
+          {places_restantes === 0 ? (
+            <span className="warning">Complet</span>
+          ) : (
+            <span>
+              {places_restantes} place{places_restantes > 1 ? "s" : ""} restante
+              {places_restantes > 1 ? "s" : ""}
+            </span>
+          )}
+
           {participants.length ? (
             <OverlayTrigger
               placement="left"
@@ -166,6 +186,7 @@ const Events = ({ thisEvent, user }) => {
             >
               <span className="participants">
                 {participants.length} participant
+                {participants.length > 1 ? "s" : ""}
               </span>
             </OverlayTrigger>
           ) : (

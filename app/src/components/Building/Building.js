@@ -11,6 +11,8 @@ const Building = ({ user }) => {
   const [thisEvents, setThisEvents] = useState(null);
   const [show, setShow] = useState(false);
 
+  const [needReload, setNeedReload] = useState(false);
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -50,8 +52,11 @@ const Building = ({ user }) => {
             setThisEvents(response.data);
           });
       }
+      if (needReload === true && user.building_id) {
+        document.location.reload();
+      }
     }
-  }, [user, token]);
+  }, [user, token, needReload]);
 
   return (
     <main className="building-main">
@@ -78,11 +83,23 @@ const Building = ({ user }) => {
               Créer une expédition
             </Button>
           </header>
-          <CreateEvent user={user} show={show} handleClose={handleClose} />
+          <CreateEvent
+            user={user}
+            show={show}
+            handleClose={handleClose}
+            setNeedReload={setNeedReload}
+          />
           <div className="event-content">
             {thisEvents && thisEvents.length ? (
               thisEvents.map((ev) => {
-                return <Events thisEvent={ev} user={user} key={ev.eventId} />;
+                return (
+                  <Events
+                    thisEvent={ev}
+                    user={user}
+                    key={ev.eventId}
+                    setNeedReload={setNeedReload}
+                  />
+                );
               })
             ) : user && user.building_id ? (
               <div className="p-3"> Pas dévènements à venir </div>

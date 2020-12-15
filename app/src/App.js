@@ -12,11 +12,11 @@ import Profil from "./components/Profil/Profil";
 
 const App = () => {
   const { logged } = useContext(UserContext);
+  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [userId, setUserId] = useState(localStorage.getItem("id"));
+  const [user, setUser] = useState(null);
 
   const userActuWithAdressUri = "/user/withbuilding/";
-  const userId = localStorage.getItem("id");
-  const token = localStorage.getItem("token");
-  const [user, setUser] = useState(null);
 
   useEffect(() => {
     if (userId) {
@@ -39,17 +39,23 @@ const App = () => {
     }
   }, [userId, token]);
 
-  console.log(user);
-
   return (
     <div className="App">
       <Header />
       <Switch>
         <Route exact path="/">
-          {logged ? <Building user={user} /> : <Sign />}
+          {logged ? (
+            <Building user={user} />
+          ) : (
+            <Sign setToken={setToken} setUserId={setUserId} />
+          )}
         </Route>
         <Route path="/mon-profil">
-          {logged ? <Profil user={user} /> : <Sign />}
+          {logged ? (
+            <Profil user={user} />
+          ) : (
+            <Sign setToken={setToken} setUserId={setUserId} />
+          )}
         </Route>
       </Switch>
 

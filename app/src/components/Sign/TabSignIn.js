@@ -3,7 +3,12 @@ import { useHistory } from "react-router-dom";
 import API_URL from "../../config/config";
 import { UserContext } from "../../context/UserContext";
 
-const TabSignIn = ({ activeTab, successMessage }) => {
+const TabSignIn = ({
+  activeTab,
+  successMessage,
+  setTokenApp,
+  setUserIdApp,
+}) => {
   let history = useHistory();
   const { setToken, setUserId, setUserName, setLogged } = useContext(
     UserContext
@@ -35,6 +40,8 @@ const TabSignIn = ({ activeTab, successMessage }) => {
       .then((res) => {
         setToken(res.token);
         setUserId(res.id);
+        setTokenApp(res.token);
+        setUserIdApp(res.id);
         setUserName(res.name);
         setLogged(true);
         localStorage.setItem("token", res.token);

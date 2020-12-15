@@ -3,7 +3,7 @@ import { Form, Button, Col, Modal } from "react-bootstrap";
 import axios from "axios";
 import API_URL from "../../config/config";
 
-const CreateEvent = ({ user, show, handleClose }) => {
+const CreateEvent = ({ user, show, handleClose, setNeedReload }) => {
   const [eventDate, setEventDate] = useState("");
   const [eventTime, setEventTime] = useState("");
   const [eventPlaces, setEventPlaces] = useState(1);
@@ -57,6 +57,9 @@ const CreateEvent = ({ user, show, handleClose }) => {
       .then(() => alert("Votre évènement a été créé"))
       .then(() => {
         handleClose();
+      })
+      .then(() => {
+        setNeedReload(true);
       });
   };
   return (
