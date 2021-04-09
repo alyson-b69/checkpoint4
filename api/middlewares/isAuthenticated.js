@@ -1,5 +1,5 @@
 const { JWTRead } = require("../lib/JWT");
-const excludedRoutesFromAuth = ["/login", "/subscribe", "/isTokenValid"];
+const excludedRoutesFromAuth = ["/login", "/subscribe"];
 const isAuthenticated = (req, res, next) => {
   if (excludedRoutesFromAuth.includes(req.url)) {
     next();
