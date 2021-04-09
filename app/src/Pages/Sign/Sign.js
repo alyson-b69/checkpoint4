@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import TabsLinks from "./Sign/TabsLinks";
-import TabSignIn from "./Sign/TabSignIn";
-import TabSignUp from "./Sign/TabSignUp";
-import "../assets/styles/Sign.css";
+import TabsLinks from "./TabsLinks";
+import TabSignIn from "./TabSignIn";
+import TabSignUp from "./TabSignUp";
+import "../../assets/styles/Sign.css";
 
 const Sign = ({ setToken, setUserId }) => {
   const [activeTab, setActiveTab] = useState("sign-in");

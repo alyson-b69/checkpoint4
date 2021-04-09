@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Navbar, Nav, Button } from "react-bootstrap";
-import { UserContext } from "../context/UserContext";
+import { UserContext } from "../../context/UserContext";
 
 const Header = () => {
   const { logged, setLogged } = useContext(UserContext);
