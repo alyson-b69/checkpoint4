@@ -5,8 +5,6 @@ import axios from "axios";
 
 const BuildingCard = ({ user }) => {
   const [adressId, setAdressId] = useState("");
-  const [zip_code, setZip_Code] = useState("");
-  const [city, setCity] = useState("");
   const [allAdress, setAllAdress] = useState([]);
 
   const token = localStorage.getItem("token");
@@ -29,27 +27,11 @@ const BuildingCard = ({ user }) => {
     }
   }, [user, token]);
 
-  useEffect(() => {
-    if (user) {
-      user.zip_code && setZip_Code(user.zip_code);
-      user.city && setCity(user.city);
-    }
-  }, [user]);
 
   const handleAdressChange = (e) => {
     e.preventDefault();
     setAdressId(e.target.value);
     console.log(e);
-  };
-
-  const handleZipChange = (e) => {
-    e.preventDefault();
-    setZip_Code(e.target.value);
-  };
-
-  const handleCityChange = (e) => {
-    e.preventDefault();
-    setCity(e.target.value);
   };
 
   const handleSubmit = (e) => {
@@ -99,7 +81,7 @@ const BuildingCard = ({ user }) => {
                       value={item.id}
                       selected={item.adress === user.adress ? true : false}
                     >
-                      {item.adress}
+                      {item.adress} - {item.zip_code} - {item.city}
                     </option>
                   ))}
                 <option
@@ -110,35 +92,6 @@ const BuildingCard = ({ user }) => {
             </Col>
           </Form.Row>
           <br />
-          <Form.Row>
-            <Form.Label column="sm" lg={3}>
-              Code postal
-            </Form.Label>
-            <Col>
-              <Form.Control
-                size="sm"
-                type="text"
-                value={zip_code}
-                onChange={handleZipChange}
-                placeholder="Code postal"
-              />
-            </Col>
-          </Form.Row>
-          <br />
-          <Form.Row>
-            <Form.Label column="sm" lg={3}>
-              Ville
-            </Form.Label>
-            <Col>
-              <Form.Control
-                size="sm"
-                type="text"
-                value={city}
-                onChange={handleCityChange}
-                placeholder="Ville"
-              />
-            </Col>
-          </Form.Row>
           <br />
           <Button
             type="submit"
@@ -150,6 +103,12 @@ const BuildingCard = ({ user }) => {
           </Button>
         </Form.Group>
       </Card.Body>
+      <Card.Footer>
+        Si votre immeuble n'existe pas, vous pouvez {' '}
+        <Button variant="darkgreen" >
+          <a href={'/creation-immeuble'}>Ajouter votre immeuble</a>
+        </Button>
+      </Card.Footer>
     </Card>
   );
 };

@@ -68,7 +68,7 @@ const Building = ({ user }) => {
             user.zip_code +
             " " +
             user.city.toUpperCase()
-          : "Pas d'immeuble rensigné dans votre profil"}
+          : "Pas d'immeuble renseigné dans votre profil"}
       </h3>
       <div className="wrapper">
         <Residents building={building} />

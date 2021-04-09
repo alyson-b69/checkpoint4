@@ -42,6 +42,14 @@ a:hover {
   background: $dark-green;
   color: $beige;
   font-weight: 500;
+  transition: all ease-in-out 0.4s;
+  & a {
+    color: $beige;
+    transition: all ease-in-out 0.4s;
+    &:hover{
+      color: black;
+    }
+  }
 }
 
 .card-title.h5 > div {
@@ -105,6 +113,8 @@ section {
   width: 100%;
   border-radius: 10px;
   background: $beige;
+  height: fit-content;
+  padding-bottom: 20px;
 }
 
 aside header,
@@ -133,6 +143,10 @@ section .expedition {
   border-radius: 5px;
   margin: 1% auto;
   box-shadow: 5px 5px 8px -5px rgba(0, 0, 0, 0.5);
+}
+
+.building-card.col-md-6.card {
+  height: fit-content !important;
 }
 
 .expedition .card-title {
@@ -238,4 +252,10 @@ footer.navbar.navbar-expand.navbar-dark.bg-dark {
     margin: 5%;
     margin-top: 0;
   }
+
+  .card-footer {
+    background-color: inherit;
+  }
+
+
 }

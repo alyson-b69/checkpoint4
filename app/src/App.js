@@ -9,6 +9,7 @@ import Sign from "./components/Sign";
 import Header from "./components/Header";
 import Building from "./components/Building/Building";
 import Profil from "./components/Profil/Profil";
+import CreateBuilding from "./components/CreateBuilding/CreateBuilding";
 
 const App = () => {
   const { logged } = useContext(UserContext);
@@ -57,6 +58,13 @@ const App = () => {
             <Sign setToken={setToken} setUserId={setUserId} />
           )}
         </Route>
+          <Route path="/creation-immeuble">
+              {logged ? (
+                  <CreateBuilding user={user} />
+              ) : (
+                  <Sign setToken={setToken} setUserId={setUserId} />
+              )}
+          </Route>
       </Switch>
 
       <Navbar as="footer" bg="dark" variant="dark">
